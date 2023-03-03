@@ -1,0 +1,121 @@
+@use "../abstracts/" as *;
+
+.designed,
+.laptop {
+  padding-block: clamp(4rem, 10vh, 6rem);
+  &__container {
+    @include flex(null, center, column, 3rem);
+  }
+  &__content,
+  &__img {
+    flex: 1;
+  }
+  &__img {
+    &--desk {
+      display: none;
+      scale: 1.9;
+    }
+    &--mob {
+      width: 400px;
+    }
+    @include media($lg) {
+      &--desk {
+        display: block;
+      }
+      &--mob {
+        display: none;
+      }
+    }
+  }
+  &__content {
+    display: grid;
+    gap: 3rem;
+  }
+}
+.designed {
+  overflow: hidden;
+  &__container {
+    @include media($lg) {
+      flex-direction: row-reverse;
+    }
+  }
+  &__img {
+    &--desk {
+      transform: translateX(33%);
+    }
+  }
+}
+.laptop {
+  &__container {
+    @include media($lg) {
+      flex-direction: row;
+    }
+  }
+  &__img {
+    &--desk {
+      transform: translateX(-28%);
+      @include media($xl) {
+        transform: translateX(-23%);
+      }
+    }
+  }
+}
+.infrastructure {
+  display: flex;
+  align-items: center;
+  position: relative;
+  .container {
+    @include media($md) {
+      @include flex(null, center, null, null);
+    }
+  }
+  &__img {
+    width: 400px;
+    margin: auto;
+    @include media($lg) {
+      width: unset;
+      margin-left: -3rem;
+    }
+  }
+  &__content {
+    max-width: 450px;
+    text-align: center;
+    color: $text-color;
+    padding-bottom: 4rem;
+    @include media($md) {
+      text-align: left;
+      padding: 0;
+    }
+  }
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  &__bg {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 78%;
+    background: $grad-tow;
+    border-radius: 0 7rem;
+    overflow: hidden;
+    @include media($md) {
+      height: 80%;
+      bottom: unset;
+    }
+    @include media($lg) {
+      height: 65%;
+    }
+    &--circles {
+      position: absolute;
+      top: -30%;
+      width: 500px;
+      scale: 1.6;
+      @include media($lg) {
+        scale: 1.8;
+        top: -65%;
+      }
+    }
+  }
+}

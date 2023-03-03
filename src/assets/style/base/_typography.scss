@@ -1,0 +1,75 @@
+@use "../abstracts/" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: {
+    family: $headings-font;
+    weight: $headings-200;
+  }
+}
+p {
+  font-family: $text-font;
+  line-height: 1.7;
+}
+
+.intro {
+  &__info {
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+  }
+  &__title {
+    font: {
+      size: clamp(1rem, 9vw, 4rem);
+    }
+    color: $text-color;
+    margin: 0;
+  }
+  &__desc {
+    font: {
+      family: $headings-font;
+      size: clamp(1rem, 5vw, 1.5rem);
+    }
+    line-height: 1.5;
+    color: $text-color;
+  }
+}
+
+.designed,
+.laptop {
+  %title {
+    font: {
+      size: 1.7rem;
+    }
+    color: $headings-color;
+  }
+  &__info {
+    max-width: 450px;
+    text-align: center;
+    @include media($lg) {
+      text-align: left;
+      max-width: unset;
+    }
+    &__title {
+      @extend %title;
+      margin-bottom: 1rem;
+    }
+    &__desc {
+      font-family: $headings-font;
+      color: $body-copy-color;
+    }
+  }
+}
+
+.designed {
+  &__title {
+    color: $headings-color;
+    font-size: clamp(1rem, 6vw, 2.25rem);
+    text-align: center;
+    margin-bottom: clamp(2rem, 10vh, 4rem);
+  }
+}

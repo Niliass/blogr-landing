@@ -1,0 +1,22 @@
+@mixin flex($just, $align, $dir, $gap) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+  flex-direction: $dir;
+  gap: $gap;
+}
+@mixin trans {
+  transition: 0.25s;
+}
+@mixin media($wd) {
+  @media (min-width: $wd) {
+    @content;
+  }
+}
+@mixin intro-grad($deg) {
+  background-image: linear-gradient(
+    $deg,
+    hsl(353, 100%, 62%),
+    hsl(13, 100%, 72%)
+  );
+}

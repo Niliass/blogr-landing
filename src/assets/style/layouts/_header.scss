@@ -1,0 +1,115 @@
+@use "../abstracts/" as *;
+
+header {
+  margin-top: 2.5rem;
+  .container {
+    @include flex(space-between, center, null, 1rem);
+    position: relative;
+    @include media($lg) {
+      gap: 2rem;
+    }
+  }
+  .#{&}__logo {
+    width: clamp(85px, 10vw, 100px);
+  }
+  nav {
+    display: grid;
+    gap: 1rem;
+    position: fixed;
+    top: 7rem;
+    width: calc(100% - 60px);
+    background: $text-color;
+    font-family: $headings-font;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1rem 1.35rem;
+    box-shadow: 0 0 15px 0 rgb($headings-color, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    @include trans;
+    @include media($md) {
+      @include flex(space-between, center, null, null);
+      flex: 1;
+      position: static;
+      width: auto;
+      padding: 0;
+      opacity: 1;
+      visibility: visible;
+      background: transparent;
+      box-shadow: none;
+    }
+    .nav__categories {
+      @include media($md) {
+        @include flex(null, null, null, 1rem);
+      }
+    }
+    .nav__category {
+      position: relative;
+      @include media($md) {
+        width: 124px;
+      }
+      &__links {
+        height: 0;
+        background-color: darken($text-color, 5%);
+        border-radius: 5px;
+        overflow: hidden;
+        @include trans;
+        @include media($md) {
+          position: absolute;
+          top: calc(100% + 1rem);
+          z-index: 1;
+          width: 100%;
+          padding-inline: 1rem;
+          text-align: left;
+          background: $text-color;
+          box-shadow: 0 0 30px 0 rgb($headings-color, 0.25);
+        }
+      }
+      &.show {
+        .nav__category {
+          &__links {
+            padding-block: 16px;
+            height: var(--height);
+          }
+        }
+      }
+      &__link {
+        display: inline-block;
+        font-family: inherit;
+        font-weight: $headings-200;
+        color: darken($footer-color, 25%);
+        padding-block: 0.5rem;
+        @include media($md) {
+          color: $headings-color;
+          font-weight: $headings-100;
+          @include trans;
+          &:hover {
+            font-weight: $headings-200;
+          }
+        }
+      }
+    }
+    .line__break {
+      border: none;
+      height: 1px;
+      width: 100%;
+      background: $footer-color;
+      @include media($md) {
+        display: none;
+      }
+    }
+  }
+  .active + nav {
+    top: 6.5rem;
+    opacity: 1;
+    visibility: visible;
+  }
+  .#{&}__btns {
+    @include flex(null, center, column, 1rem);
+    margin-block: 1rem;
+    @include media($md) {
+      flex-direction: row;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use "../abstracts/" as *;
+
+.intro {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 74px);
+  @include media($xxl) {
+    min-height: calc(60vh - 95px);
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    min-height: 100vh;
+    @include intro-grad(-35deg);
+    border-radius: 0 0 0 7rem;
+    overflow: hidden;
+    @include media($md) {
+      @include intro-grad(-90deg);
+    }
+    @include media($xxl) {
+      min-height: 60vh;
+    }
+    &--mob {
+      position: absolute;
+      bottom: -10rem;
+      left: 8rem;
+      width: 100%;
+      height: 100%;
+      scale: 4;
+    }
+    &--desk {
+      display: none;
+    }
+    @include media($md) {
+      &--desk {
+        display: block;
+        position: absolute;
+        bottom: 5rem;
+        left: clamp(35rem, 60vw, 55rem);
+        width: 40%;
+        scale: 5.5;
+      }
+      &--mob {
+        display: none;
+      }
+    }
+  }
+  &__btns {
+    @include flex(space-between, null, null, 1rem);
+    margin-top: 2rem;
+    margin-inline: auto;
+    max-width: 400px;
+  }
+}
